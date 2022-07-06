@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  line-height: normal;
+  letter-spacing: normal;
+  font-family: var(--cerapro);
+  font-size: var(--regular);
+  font-weight: var(--regular);
+  color: var(--dark);
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}

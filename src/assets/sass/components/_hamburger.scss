@@ -1,0 +1,42 @@
+$size: 40px;
+$layerheight: 4px;
+
+.hamburger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: $size;
+  height: $size;
+
+  span {
+    border-radius: 3px;
+    width: 100%;
+    height: $layerheight;
+    background-color: var(--dark);
+    transition: 0.2s linear transform;
+
+    &:nth-child(2) {
+      margin: 6px 0;
+    }
+  }
+
+  &.open {
+    span {
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        transform-origin: 50% 50%;
+      }
+
+      &:nth-child(2) {
+        margin: -3.75px;
+        transform: scaleX(0);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        transform-origin: 50% 50%;
+      }
+    }
+  }
+}

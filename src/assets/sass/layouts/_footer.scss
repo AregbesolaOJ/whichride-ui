@@ -1,0 +1,37 @@
+.footer {
+  padding: 2rem 0;
+  background: var(--footer-yellow);
+
+  &-items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    list-style-type: none;
+
+    @include respond(medium) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &-item {
+    margin: 0 0.5rem;
+    line-height: 0.7rem;
+    font-size: var(--x-small);
+    font-weight: var(--regular);
+    color: var(--white);
+    user-select: none;
+
+    &:nth-child(2) {
+      margin-left: auto;
+    }
+
+    @include respond(medium) {
+      margin: 0.5rem 0;
+
+      &:nth-child(2) {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+.nav {
+  position: relative;
+  width: 100%;
+  background-color: var(--white);
+
+  &bar {
+    position: fixed;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    &-nav {
+      @include respond(medium) {
+        z-index: 12;
+        position: fixed;
+        top: 90px;
+        left: -100vw;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 3.5rem;
+        width: 100%;
+        height: 100vmax;
+        background: var(--primary);
+        transition: 0.3s linear left;
+
+        &.open {
+          left: 0;
+        }
+      }
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &-brand {
+      width: 155px;
+      height: 75px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-toggler {
+      @include respond(medium) {
+        z-index: 10;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        border: 0;
+        width: 47.5px;
+        height: 47.5px;
+        background-color: var(--white);
+
+        &:active,
+        &:focus,
+        &:hover {
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
+        }
+      }
+      display: none;
+    }
+  }
+
+  &-item {
+    @include respond(medium) {
+      margin-bottom: 3rem;
+    }
+    margin: 0 0.8rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    @include respond(medium) {
+      font-size: var(--medium);
+      color: var(--white);
+    }
+    @include respond(small) {
+      font-size: var(--regular);
+    }
+    font-weight: var(--semi-bold);
+    font-size: var(--small);
+    z-index: 1;
+    position: relative;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+    overflow: hidden;
+    color: var(--dark);
+    line-height: 18px;
+    // sass-lint:disable no-transition-all
+    transition: all 0.5s;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      margin: 0;
+      border-radius: 50%;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      color: transparent;
+      content: '.';
+    }
+
+    &:hover {
+      color: #720e76;
+
+      &::after {
+        animation: circle 1.8s ease-in forwards;
+        -webkit-animation: circle 1.8s ease-in forwards;
+      }
+    }
+
+    &.active {
+      color: #720e76;
+    }
+  }
+}
+
+/* Keyframes */
+@keyframes circle {
+  0% {
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 100%;
+    width: 1px;
+    height: 1px;
+    background: rgba($color: var(--primary), $alpha: 0.1);
+  }
+
+  100% {
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 0;
+    width: 5000%;
+    height: 5000%;
+    background: rgba(70, 0, 73, 0.28);
+  }
+}

@@ -1,0 +1,29 @@
+$colors: (
+  primary: var(--primary),
+  black: var(--black),
+  dark: var(--dark),
+  dark-gray: var(--dark-gray),
+  white: var(--white),
+  light-gray: var(--light-gray),
+  purple: var(--purple),
+  yellow: var(--yellow),
+  blue: var(--blue),
+  green: var(--green),
+  light-purple: var(--light-purple),
+  footer-yellow: var(--footer-yellow),
+  light-bg: var(--light-bg)
+);
+
+.filler {
+  flex-grow: 1 !important;
+}
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background: $color !important;
+  }
+
+  .color-#{$name} {
+    color: $color !important;
+  }
+}

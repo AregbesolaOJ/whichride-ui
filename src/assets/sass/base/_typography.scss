@@ -1,0 +1,73 @@
+.heading {
+  @include respond(small) {
+    font-size: var(--m-large);
+  }
+  font-family: var(--cerapro);
+  font-size: var(--x-large);
+  font-weight: var(--bold);
+  margin-bottom: 1.25rem;
+  color: var(--dark);
+
+  &--sm {
+    @include respond(small) {
+      font-size: var(--large);
+    }
+    font-size: var(--m-large-36);
+    font-family: var(--cerapro);
+    font-weight: var(--bold);
+    margin-bottom: 1.25rem;
+    color: var(--dark);
+  }
+
+  &--lg {
+    @include respond(small) {
+      font-size: var(--m-large-36);
+    }
+    font-family: var(--cerapro);
+    font-weight: var(--bold);
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+
+    font-size: var(--x-large-48);
+  }
+}
+
+.mini-heading {
+  font-family: var(--cerapro);
+  font-size: var(--m-large);
+  font-weight: var(--semi-bold);
+  position: relative;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  color: var(--dark);
+
+  @include respond(small) {
+    font-size: var(--large);
+  }
+}
+
+.paragraph {
+  font-family: var(--cerapro);
+  font-size: var(--regular);
+  font-weight: var(--regular);
+  line-height: 1.5;
+  letter-spacing: 0.25px;
+  color: var(--dark-gray);
+
+  @include respond(medium) {
+    font-size: var(--small);
+  }
+
+  &--big {
+    font-family: var(--cerapro);
+    font-size: var(--title);
+    font-weight: var(--regular);
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+    color: var(--dark-gray);
+
+    @include respond(medium) {
+      font-size: var(--medium);
+    }
+  }
+}
