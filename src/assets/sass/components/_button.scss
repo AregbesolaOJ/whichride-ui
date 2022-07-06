@@ -1,14 +1,14 @@
 .btn {
-  padding: 1rem 2rem;
-  background-color: var(--dark);
-  color: var(--white);
-  height: 48px;
-  font-family: var(--cerapro);
-  font-size: 16px;
-  line-height: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 2rem;
+  height: 48px;
+  background-color: var(--dark);
+  line-height: 12px;
+  font-family: var(--cerapro);
+  font-size: 16px;
+  color: var(--white);
 
   &__fw {
     width: 100%;
