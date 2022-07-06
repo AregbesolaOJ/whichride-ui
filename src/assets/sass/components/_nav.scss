@@ -88,15 +88,16 @@
     @include respond(small) {
       font-size: var(--regular);
     }
-    font-weight: var(--semi-bold);
-    font-size: var(--small);
     z-index: 1;
     position: relative;
     padding-right: 1rem !important;
     padding-left: 1rem !important;
     overflow: hidden;
-    color: var(--dark);
     line-height: 18px;
+    font-size: var(--small);
+    font-weight: var(--semi-bold);
+    color: var(--dark);
+
     // sass-lint:disable no-transition-all
     transition: all 0.5s;
 

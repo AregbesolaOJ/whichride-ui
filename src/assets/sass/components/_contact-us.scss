@@ -1,0 +1,26 @@
+.contact-us {
+  background-color: var(--yellow);
+
+  .container {
+    padding-top: 1rem;
+    max-width: 514px;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    margin: 3rem 0 2rem;
+
+    .form-group {
+      margin-right: 11px;
+    }
+
+    @include respond(small) {
+      flex-direction: column;
+
+      .form-group {
+        margin-bottom: 11px;
+      }
+    }
+  }
+}

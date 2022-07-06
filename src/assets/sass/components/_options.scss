@@ -1,0 +1,54 @@
+.options {
+  padding-bottom: 5rem;
+  min-height: 400px;
+  background: linear-gradient(90deg, var(--light-bg) 50%, var(--white) 50%);
+
+  &-cards {
+    @include respond(small) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  &-card {
+    padding: 1rem 5rem;
+    // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+
+    @include respond(medium) {
+      padding: 1rem 2.5rem;
+    }
+    @include respond(small) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+    }
+
+    h3 {
+      margin: 1rem 0;
+      font-size: var(--title);
+      font-weight: var(--semi-bold);
+    }
+
+    .paragraph {
+      @include respond(small) {
+        text-align: center;
+      }
+    }
+  }
+}
