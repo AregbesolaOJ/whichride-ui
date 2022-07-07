@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   padding-top: 1.5rem;
-  min-height: 10vh;
 
   @include respond(medium) {
     flex-direction: column;
