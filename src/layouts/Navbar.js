@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import logo from 'assets/img/svg/logo.svg';
+import logo from 'assets/img/logo.png';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,12 @@ export const Navigation = () => {
     <Navbar className="nav shadow-sm" expand="lg" sticky="top">
       <div className="container d-flex justify-content-between align-items-center">
         <NavLink className="navbar-brand pt-3" to="/">
-          <img src={logo} alt="Whichride" className="img-fluid" />
+          <img
+            src={logo}
+            alt="Whichride logo"
+            className="img-fluid"
+            title="Whichride"
+          />
         </NavLink>
 
         <NavbarToggler

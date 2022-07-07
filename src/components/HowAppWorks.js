@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import phoneImage from 'assets/img/iPhoneX2.png';
-import classNames from 'classnames';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { StepsCard } from './StepsCard';
 
 const appsArr = [
   {
@@ -28,13 +30,56 @@ const appsArr = [
 
 export const HowAppWorks = () => {
   const [active, setActive] = useState();
+  const headerControl = useAnimation();
+  const phoneControl = useAnimation();
+  const stepsControl = useAnimation();
+  const [ref, inView] = useInView();
 
-  const handleSetActive = (selected) => setActive(selected);
+  const headerVariants = {
+    hidden: { opacity: 0.25, scale: 0.5 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.75 } }
+  };
+
+  const phoneVariant = {
+    hidden: { opacity: 0, x: -1000 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1.25 }
+    }
+  };
+
+  const stepsVariant = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, delay: 0.25 }
+    }
+  };
+
+  const stepsItemVariant = {
+    visible: (i) => ({ opacity: 1, x: 0, transition: { delay: 1 * i * 0.5 } }),
+    hidden: { opacity: 0, x: 500 }
+  };
+
+  useEffect(() => {
+    if (inView) {
+      phoneControl.start('visible');
+      headerControl.start('visible');
+      stepsControl.start('visible');
+    }
+  }, [inView, phoneControl, stepsControl, headerControl]);
 
   return (
-    <section className="section how-it-works" id="app">
+    <section className="section how-it-works" id="app" ref={ref}>
       <div className="container">
-        <div className="title-content">
+        <motion.div
+          className="title-content"
+          variants={headerVariants}
+          initial="hidden"
+          animate={headerControl}
+        >
           <h4 className="heading--sm color-white">
             Whichride brings together multiple ride hailing providers and local
             taxi firms in one app
@@ -43,44 +88,38 @@ export const HowAppWorks = () => {
             Allowing riders to select the provider that offers the best price,
             service or travel time, then seamlessly book within the app{' '}
           </p>
-        </div>
+        </motion.div>
         <div className="presentation">
-          <div className="presentation__media">
+          <motion.div
+            className="presentation__media"
+            variants={phoneVariant}
+            initial="hidden"
+            animate={phoneControl}
+          >
             <img
               src={phoneImage}
               alt="Whichride"
               title="Checkout Whichride"
               className="img-fluid"
             />
-          </div>
-          <div className="presentation__app-steps">
+          </motion.div>
+          <motion.div
+            className="presentation__app-steps"
+            variants={stepsVariant}
+            initial="hidden"
+            animate={stepsControl}
+          >
             {appsArr.map((item) => (
-              <div
-                className="presentation__app-step"
+              <StepsCard
                 key={item.id}
-                tabIndex="-1"
-                aria-hidden
-                role="button"
-                onClick={() => handleSetActive(item.id)}
-              >
-                <div className="step-label">
-                  <div
-                    className={classNames('step-label__avatar', {
-                      active: active === item.id
-                    })}
-                  >
-                    <p className=" m-0">Step {item.id}</p>
-                  </div>
-                </div>
-                <div className="content">
-                  <h4 className="paragraph--big color-white">{item.title}</h4>
-                  <p className="paragraph color-light-gray m-0">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+                item={item}
+                variants={stepsItemVariant}
+                custom={item.id}
+                active={active}
+                handleSetActive={setActive}
+              />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

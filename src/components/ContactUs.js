@@ -1,4 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import { useAnimation, motion } from 'framer-motion';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { validateEmail } from 'utility';
 
 export const ContactUs = () => {
@@ -12,9 +14,28 @@ export const ContactUs = () => {
 
   const handleSubmit = () => {};
 
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  const variants = {
+    hidden: { opacity: 0.25, scale: 0.5 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.75 } }
+  };
+
+  useEffect(() => {
+    if (inView) {
+      control.start('visible');
+    }
+  }, [inView, control]);
+
   return (
-    <section className="section contact-us" id="get-in-touch">
-      <div className="container">
+    <section className="section contact-us" id="get-in-touch" ref={ref}>
+      <motion.div
+        className="container"
+        variants={variants}
+        initial="hidden"
+        animate={control}
+      >
         <h4 className="heading--sm">Sign up to our beta form </h4>
         <p className="paragraph--big my-3">
           Sign up to our mailing list to find out more information and keep up
@@ -46,7 +67,7 @@ export const ContactUs = () => {
             Submit
           </button>
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 };

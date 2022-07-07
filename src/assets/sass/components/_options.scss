@@ -16,7 +16,7 @@
 
   &-card {
     padding: 1rem 5rem;
-    // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
 
     @include respond(medium) {
       padding: 1rem 2.5rem;
