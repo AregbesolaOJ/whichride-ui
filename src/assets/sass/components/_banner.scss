@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   padding-top: 1.5rem;
-  min-height: 25vh;
+  min-height: 500px;
 
   @include respond(medium) {
     flex-direction: column;
+    min-height: 250px;
   }
 
   &-info {
